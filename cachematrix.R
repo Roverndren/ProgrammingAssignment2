@@ -9,7 +9,8 @@
 ## then cacheSolve retrieves the inverse from the cache.
 
 
-## Write a short comment describing this function
+## This function creates a special "matrix" object that can cache its inverse.
+## Example usuage:  y <- makeCacheMatrix(matrix(c(1,0,5,2,1,6,3,4,0),3,3))
 
 makeCacheMatrix <- function(x = matrix()) {
 matinv <<- NULL
@@ -28,7 +29,14 @@ list(get = get, set = set, getinv = getinv, setinv = setinv)
 }
 
 
-## Returns a matrix that is the inverse of 'x' 
+## This function returns a matrix that is the inverse of 'x' 
+## Example usuage: assuming 
+## y <- makeCacheMatrix(matrix(c(1,0,5,2,1,6,3,4,0),3,3))
+## then cacheSolve(y) will return the inverse
+## kindly note that when testing whether the inverse itself
+## is correct, you need to apply the matrix multiplication operator %*%
+## instead of the element wise multiplication operator *
+
 cacheSolve <- function(x, ...) {
 matinv = x$getinv()
 if(!is.null(matinv)) 
